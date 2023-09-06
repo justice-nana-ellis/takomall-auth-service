@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "build": "nodemon",
-    "build": "tsc",
+    "dev": "tsc",
     "update-db-schema": "npx prisma migrate dev --name reset-and-recreate && npx prisma migrate dev && npx prisma generate"
   },
   "dependencies": {
