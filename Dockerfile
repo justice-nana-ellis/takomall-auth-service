@@ -4,7 +4,7 @@ WORKDIR /app/src
 
 COPY package*.json .
 
-RUN yarn install
+RUN npm install
 
 COPY . .
 
@@ -16,4 +16,4 @@ RUN prisma migrate dev
 
 EXPOSE 3001
 
-CMD ["yarn", "run", "build"]
+CMD ["npm", "run", "build"]
