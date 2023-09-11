@@ -12,7 +12,7 @@ RUN npm i -g prisma
 
 RUN npx prisma generate
 
-RUN npx prisma migrate dev
+#RUN npx prisma migrate dev
 
 EXPOSE 3001
 
