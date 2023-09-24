@@ -3,12 +3,13 @@ import * as jwt from "jsonwebtoken";
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-export const signToken = async (id: number, email: string): Promise<string> => {
+export const signToken = async (id: number, email: string, full_name: string): Promise<string> => {
     const payload = {
         iss: 'Takomall Services',
         sub: id,    // the sub is a jwt convention - required to take a UNIQUE IDENTIFIER
         id,
-        email
+        email,
+        full_name
     }
     // @ts-ignore
     const secret: string = process.env.SECRET_KEY;
