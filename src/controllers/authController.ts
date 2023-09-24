@@ -60,7 +60,7 @@ export const signin = async (req: Request, res: Response) => {
         const pwdMatch: PasswordMatch = await argon.verify(user.password, password)
         if(!pwdMatch) return res.status(401).send("Incorrect Credentials");
         // @ts-ignore
-        const token: string = await signToken(user.id, user.email);
+        const token: string = await signToken(user.id, user.email, user.full_name);
         res.cookie('authToken', token, {
             httpOnly: true,
             maxAge: 3600 * 60 * 60 * 60, 
