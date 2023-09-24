@@ -26,9 +26,15 @@ export const signup = async (req: Request, res: Response) => {
         sendEmail(verifyEmailTemplate(''), email, "Verify Email");
         // return res.status(200).send("Link Sent to your Mail");
         // res.json(user);
+         const usernopassword = {
+            id: user.id,
+            email: user.email,
+            full_name: user.full_name,
+        };
+        
         const obj = {
             message: "E-Mail verification link sent to your Mail: Please verify your E-Mail to activate your account",
-            user: user
+            user: usernopassword
         };
 
         res.status(200).send(obj);
