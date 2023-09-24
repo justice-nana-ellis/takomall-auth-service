@@ -123,9 +123,20 @@ export const resetPasswordWithLink = async(req: Request, res: Response) => {
         const decoded = await jwtDecoder(token, secret);
         const hash =  await argon.hash(newPassword);
         const existingUser = await authService.resetPasswordWithLink(decoded.email, hash);
-        return res.status(200).json({ status: "Password Changed Successfully 🌿" });
+        return res.status(200).send("Password Changed Successfully");
     } catch (error: any) {
         return res.status(403).json('Invalid Token');
+    }
+
+}
+
+export const logout = async(req: Request, res: Response) => {
+    try {
+        res.clearCookie('authToken');
+        // --frontend login link to be redirected on logout
+        return res.status(200).send("Logged-out Successfully");
+    } catch (error: any) {
+        return res.status(403).send("Failed to Log Out");
     }
 
 }
